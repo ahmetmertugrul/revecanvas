@@ -22,14 +22,6 @@ export default function Home() {
   const [error, setError] = useState<string>("");
   const [results, setResults] = useState<GenerationResult[]>([]);
 
-  // Load API key from localStorage on mount
-  useEffect(() => {
-    const savedKey = localStorage.getItem("fal_api_key");
-    if (savedKey) {
-      setApiKey(savedKey);
-    }
-  }, []);
-
   const handleApiKeyChange = (key: string) => {
     setApiKey(key);
   };

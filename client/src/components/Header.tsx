@@ -21,14 +21,6 @@ export function Header({ apiKey, onApiKeyChange }: HeaderProps) {
   const handleKeyChange = (value: string) => {
     setLocalKey(value);
     onApiKeyChange(value);
-    
-    if (value) {
-      localStorage.setItem("fal_api_key", value);
-      toast({
-        title: "API Key Saved",
-        description: "Your API key has been saved locally and securely.",
-      });
-    }
   };
 
   return (
@@ -75,7 +67,7 @@ export function Header({ apiKey, onApiKeyChange }: HeaderProps) {
         <div className="border-t bg-muted/50 py-1">
           <div className="container mx-auto px-4 md:px-8">
             <p className="text-xs text-muted-foreground text-center" data-testid="text-security-notice">
-              🔒 Your API key is stored locally and never sent to our servers
+              🔒 Your API key is kept in memory only and sent directly to FAL.ai - never stored
             </p>
           </div>
         </div>
