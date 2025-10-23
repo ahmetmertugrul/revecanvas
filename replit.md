@@ -79,7 +79,7 @@ This application allows users to create stunning AI-generated images using three
 ### October 23, 2025
 - ✅ **Fixed upload functionality**: EditForm and RemixForm now support click-to-upload via Card onClick handlers (in addition to drag-and-drop)
 - ✅ **Enhanced API key security**: Completely removed localStorage/sessionStorage - API keys now stored ONLY in React state, never persisted
-- ✅ **Added template visual previews**: Category-based gradient backgrounds on template cards for improved visual hierarchy
+- ✅ **Added AI-generated template preview images**: Each of 8 categories now has unique, AI-generated preview images instead of gradients (landscape, portrait, abstract, product, architecture, fantasy, nature, art)
 - ✅ **Corrected Remix API integration**: Updated to match FAL.ai documentation (uses image_urls array, num_images parameter; removed unsupported strength field)
 
 ### Initial Setup
