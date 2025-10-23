@@ -5,7 +5,6 @@ import { remixInputSchema, RemixInput } from "@shared/schema";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from "@/components/ui/form";
 import { Card } from "@/components/ui/card";
 import { Shuffle, Upload, X } from "lucide-react";
@@ -29,8 +28,8 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
     defaultValues: {
       prompt: "",
       image_url: "",
-      style_strength: 0.7,
       aspect_ratio: "1:1",
+      num_images: 1,
       output_format: "png",
     },
   });
@@ -180,37 +179,7 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
           )}
         />
 
-        <FormField
-          control={form.control}
-          name="style_strength"
-          render={({ field }) => (
-            <FormItem>
-              <div className="flex items-center justify-between">
-                <FormLabel>Style Strength</FormLabel>
-                <span className="text-sm font-medium" data-testid="text-style-strength">
-                  {field.value.toFixed(2)}
-                </span>
-              </div>
-              <FormControl>
-                <Slider
-                  min={0}
-                  max={1}
-                  step={0.05}
-                  value={[field.value]}
-                  onValueChange={(vals) => field.onChange(vals[0])}
-                  disabled={disabled}
-                  data-testid="slider-style-strength"
-                />
-              </FormControl>
-              <FormDescription>
-                Higher values apply the style more strongly
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <FormField
             control={form.control}
             name="aspect_ratio"
@@ -235,6 +204,34 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
                     <SelectItem value="2:3">2:3 (Portrait)</SelectItem>
                     <SelectItem value="4:3">4:3 (Classic)</SelectItem>
                     <SelectItem value="3:4">3:4 (Portrait)</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="num_images"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Number of Images</FormLabel>
+                <Select
+                  onValueChange={(val) => field.onChange(parseInt(val))}
+                  value={field.value.toString()}
+                  disabled={disabled}
+                >
+                  <FormControl>
+                    <SelectTrigger data-testid="select-remix-num-images">
+                      <SelectValue placeholder="Select number" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="1">1 Image</SelectItem>
+                    <SelectItem value="2">2 Images</SelectItem>
+                    <SelectItem value="3">3 Images</SelectItem>
+                    <SelectItem value="4">4 Images</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />

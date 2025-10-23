@@ -26,12 +26,12 @@ export const editInputSchema = z.object({
 
 export type EditInput = z.infer<typeof editInputSchema>;
 
-// Remix Schema - Allow data URLs or regular URLs
+// Remix Schema - Allow data URLs or regular URLs  
 export const remixInputSchema = z.object({
   prompt: z.string().min(1, "Prompt is required"),
   image_url: z.string().min(1, "Image is required"), // Accept data URLs
-  style_strength: z.number().min(0).max(1).default(0.7),
   aspect_ratio: aspectRatioEnum.default("1:1"),
+  num_images: z.number().int().min(1).max(4).default(1),
   output_format: outputFormatEnum.default("png"),
 });
 

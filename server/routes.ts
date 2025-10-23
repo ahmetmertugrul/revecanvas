@@ -164,9 +164,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Call FAL.ai Reve remix API
       const result = await fal.subscribe("fal-ai/reve/remix", {
         input: {
-          ...validatedInput,
-          image_url: imageUrl,
-        },
+          prompt: validatedInput.prompt,
+          image_urls: [imageUrl],
+          aspect_ratio: validatedInput.aspect_ratio,
+          num_images: validatedInput.num_images,
+          output_format: validatedInput.output_format,
+        } as any,
         logs: false,
       });
 

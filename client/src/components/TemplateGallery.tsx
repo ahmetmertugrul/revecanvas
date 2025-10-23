@@ -23,6 +23,20 @@ export function TemplateGallery({ templates, onSelectTemplate, selectedTemplateI
     }
   };
 
+  const getCategoryGradient = (category: string) => {
+    const gradients: Record<string, string> = {
+      landscape: "from-blue-500/20 to-green-500/20",
+      portrait: "from-purple-500/20 to-pink-500/20",
+      abstract: "from-pink-500/20 to-yellow-500/20",
+      product: "from-gray-500/20 to-blue-500/20",
+      architecture: "from-slate-500/20 to-cyan-500/20",
+      fantasy: "from-violet-500/20 to-fuchsia-500/20",
+      nature: "from-emerald-500/20 to-teal-500/20",
+      art: "from-indigo-500/20 to-purple-500/20",
+    };
+    return gradients[category] || "from-gray-500/20 to-gray-600/20";
+  };
+
   if (templates.length === 0) {
     return null;
   }
@@ -58,24 +72,27 @@ export function TemplateGallery({ templates, onSelectTemplate, selectedTemplateI
             }}
           >
             <div className="space-y-3">
+              {/* Visual Preview */}
+              <div className={`h-24 rounded-md bg-gradient-to-br ${getCategoryGradient(template.category)} flex items-center justify-center`}>
+                <div className="text-white/80">
+                  {getModelIcon(template.modelType)}
+                </div>
+              </div>
+
               <div className="flex items-start justify-between gap-2">
                 <h3 className="font-medium text-sm line-clamp-2" data-testid={`text-template-title-${template.id}`}>
                   {template.title}
                 </h3>
                 <div className="flex-shrink-0">
-                  {getModelIcon(template.modelType)}
+                  <Badge variant="outline" className="text-xs capitalize">
+                    {template.category}
+                  </Badge>
                 </div>
               </div>
               
-              <p className="text-xs text-muted-foreground line-clamp-3" data-testid={`text-template-prompt-${template.id}`}>
+              <p className="text-xs text-muted-foreground line-clamp-2" data-testid={`text-template-prompt-${template.id}`}>
                 {template.prompt}
               </p>
-              
-              <div className="flex items-center gap-2">
-                <Badge variant="outline" className="text-xs capitalize">
-                  {template.category}
-                </Badge>
-              </div>
             </div>
           </Card>
         ))}
