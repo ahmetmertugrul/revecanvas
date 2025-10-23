@@ -3,6 +3,16 @@ import { Badge } from "@/components/ui/badge";
 import { PromptTemplate } from "@shared/schema";
 import { Sparkles, Pencil, Shuffle } from "lucide-react";
 
+// Import category preview images
+import landscapeImg from "@assets/generated_images/Mountain_landscape_sunset_scene_8ce8f6c7.png";
+import portraitImg from "@assets/generated_images/Professional_portrait_business_headshot_f4af713f.png";
+import abstractImg from "@assets/generated_images/Abstract_fluid_art_colors_c6d042e8.png";
+import productImg from "@assets/generated_images/Product_photography_bluetooth_speaker_91ddc4fc.png";
+import architectureImg from "@assets/generated_images/Modern_architecture_building_exterior_bc05a2ed.png";
+import fantasyImg from "@assets/generated_images/Magical_fantasy_forest_scene_bc038f3c.png";
+import natureImg from "@assets/generated_images/Ocean_wave_nature_seascape_050ff4b3.png";
+import artImg from "@assets/generated_images/Digital_art_portrait_illustration_1dc8de79.png";
+
 interface TemplateGalleryProps {
   templates: PromptTemplate[];
   onSelectTemplate: (template: PromptTemplate) => void;
@@ -23,18 +33,18 @@ export function TemplateGallery({ templates, onSelectTemplate, selectedTemplateI
     }
   };
 
-  const getCategoryGradient = (category: string) => {
-    const gradients: Record<string, string> = {
-      landscape: "from-blue-500/20 to-green-500/20",
-      portrait: "from-purple-500/20 to-pink-500/20",
-      abstract: "from-pink-500/20 to-yellow-500/20",
-      product: "from-gray-500/20 to-blue-500/20",
-      architecture: "from-slate-500/20 to-cyan-500/20",
-      fantasy: "from-violet-500/20 to-fuchsia-500/20",
-      nature: "from-emerald-500/20 to-teal-500/20",
-      art: "from-indigo-500/20 to-purple-500/20",
+  const getCategoryImage = (category: string) => {
+    const categoryImages: Record<string, string> = {
+      landscape: landscapeImg,
+      portrait: portraitImg,
+      abstract: abstractImg,
+      product: productImg,
+      architecture: architectureImg,
+      fantasy: fantasyImg,
+      nature: natureImg,
+      art: artImg,
     };
-    return gradients[category] || "from-gray-500/20 to-gray-600/20";
+    return categoryImages[category] || abstractImg;
   };
 
   if (templates.length === 0) {
@@ -73,8 +83,14 @@ export function TemplateGallery({ templates, onSelectTemplate, selectedTemplateI
           >
             <div className="space-y-3">
               {/* Visual Preview */}
-              <div className={`h-24 rounded-md bg-gradient-to-br ${getCategoryGradient(template.category)} flex items-center justify-center`}>
-                <div className="text-white/80">
+              <div className="relative h-32 rounded-md overflow-hidden bg-muted">
+                <img 
+                  src={getCategoryImage(template.category)} 
+                  alt={template.category}
+                  className="w-full h-full object-cover"
+                  data-testid={`img-template-preview-${template.id}`}
+                />
+                <div className="absolute top-2 right-2 bg-background/80 backdrop-blur-sm rounded-full p-1.5">
                   {getModelIcon(template.modelType)}
                 </div>
               </div>
