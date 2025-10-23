@@ -112,22 +112,23 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
           <FormLabel className="text-base font-semibold">Upload Reference Image</FormLabel>
           
           {!imagePreview ? (
-            <Card
-              className="border-2 border-dashed p-8 text-center cursor-pointer hover-elevate transition-all"
-              onDrop={handleDrop}
-              onDragOver={handleDragOver}
-              data-testid="dropzone-remix-upload"
-            >
+            <div className="relative">
               <input
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
                 className="hidden"
-                id="remix-upload"
+                id="remix-reference-image-upload"
                 disabled={disabled}
                 data-testid="input-remix-file-upload"
               />
-              <label htmlFor="remix-upload" className="cursor-pointer">
+              <Card
+                className="border-2 border-dashed p-8 text-center cursor-pointer hover-elevate transition-all"
+                onDrop={handleDrop}
+                onDragOver={handleDragOver}
+                onClick={() => document.getElementById('remix-reference-image-upload')?.click()}
+                data-testid="dropzone-remix-upload"
+              >
                 <div className="flex flex-col items-center gap-2">
                   <Upload className="h-12 w-12 text-muted-foreground" />
                   <div>
@@ -135,8 +136,8 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
                     <p className="text-sm text-muted-foreground">PNG, JPG, or WebP</p>
                   </div>
                 </div>
-              </label>
-            </Card>
+              </Card>
+            </div>
           ) : (
             <Card className="relative p-4">
               <Button

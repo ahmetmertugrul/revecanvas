@@ -110,22 +110,23 @@ export function EditForm({ onGenerate, isGenerating, disabled, initialPrompt }: 
           <FormLabel className="text-base font-semibold">Upload Image to Edit</FormLabel>
           
           {!imagePreview ? (
-            <Card
-              className="border-2 border-dashed p-8 text-center cursor-pointer hover-elevate transition-all"
-              onDrop={handleDrop}
-              onDragOver={handleDragOver}
-              data-testid="dropzone-image-upload"
-            >
+            <div className="relative">
               <input
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
                 className="hidden"
-                id="image-upload"
+                id="edit-image-upload"
                 disabled={disabled}
                 data-testid="input-file-upload"
               />
-              <label htmlFor="image-upload" className="cursor-pointer">
+              <Card
+                className="border-2 border-dashed p-8 text-center cursor-pointer hover-elevate transition-all"
+                onDrop={handleDrop}
+                onDragOver={handleDragOver}
+                onClick={() => document.getElementById('edit-image-upload')?.click()}
+                data-testid="dropzone-image-upload"
+              >
                 <div className="flex flex-col items-center gap-2">
                   <Upload className="h-12 w-12 text-muted-foreground" />
                   <div>
@@ -133,8 +134,8 @@ export function EditForm({ onGenerate, isGenerating, disabled, initialPrompt }: 
                     <p className="text-sm text-muted-foreground">PNG, JPG, or WebP</p>
                   </div>
                 </div>
-              </label>
-            </Card>
+              </Card>
+            </div>
           ) : (
             <Card className="relative p-4">
               <Button
