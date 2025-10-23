@@ -76,6 +76,13 @@ This application allows users to create stunning AI-generated images using three
 
 ## Recent Changes
 
+### October 23, 2025
+- ✅ **Fixed upload functionality**: EditForm and RemixForm now support click-to-upload via Card onClick handlers (in addition to drag-and-drop)
+- ✅ **Enhanced API key security**: Completely removed localStorage/sessionStorage - API keys now stored ONLY in React state, never persisted
+- ✅ **Added template visual previews**: Category-based gradient backgrounds on template cards for improved visual hierarchy
+- ✅ **Corrected Remix API integration**: Updated to match FAL.ai documentation (uses image_urls array, num_images parameter; removed unsupported strength field)
+
+### Initial Setup
 - ✅ Initial project setup with fullstack TypeScript
 - ✅ Implemented all three Reve AI model interfaces
 - ✅ Created 16 pre-built prompt templates
