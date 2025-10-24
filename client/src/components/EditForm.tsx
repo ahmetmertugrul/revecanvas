@@ -65,6 +65,13 @@ export function EditForm({ onGenerate, isGenerating, disabled, initialPrompt }: 
     }
   }, [form, toast]);
 
+  const handleUploadClick = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('Upload area clicked, opening file picker...');
+    fileInputRef.current?.click();
+  }, []);
+
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     const file = e.dataTransfer.files?.[0];
@@ -126,7 +133,7 @@ export function EditForm({ onGenerate, isGenerating, disabled, initialPrompt }: 
                 className="border-2 border-dashed p-8 text-center hover-elevate transition-all cursor-pointer"
                 onDrop={handleDrop}
                 onDragOver={handleDragOver}
-                onClick={() => !disabled && fileInputRef.current?.click()}
+                onClick={!disabled ? handleUploadClick : undefined}
                 data-testid="dropzone-image-upload"
               >
                 <div className="flex flex-col items-center gap-2 pointer-events-none">
