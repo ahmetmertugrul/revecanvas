@@ -122,23 +122,21 @@ export function EditForm({ onGenerate, isGenerating, disabled, initialPrompt }: 
                 disabled={disabled}
                 data-testid="input-file-upload"
               />
-              <div
+              <Card 
+                className="border-2 border-dashed p-8 text-center hover-elevate transition-all cursor-pointer"
                 onDrop={handleDrop}
                 onDragOver={handleDragOver}
-                onClick={() => fileInputRef.current?.click()}
+                onClick={() => !disabled && fileInputRef.current?.click()}
                 data-testid="dropzone-image-upload"
-                className="cursor-pointer"
               >
-                <Card className="border-2 border-dashed p-8 text-center hover-elevate transition-all">
-                  <div className="flex flex-col items-center gap-2">
-                    <Upload className="h-12 w-12 text-muted-foreground" />
-                    <div>
-                      <p className="font-medium">Drop your image here or click to upload</p>
-                      <p className="text-sm text-muted-foreground">PNG, JPG, or WebP</p>
-                    </div>
+                <div className="flex flex-col items-center gap-2 pointer-events-none">
+                  <Upload className="h-12 w-12 text-muted-foreground" />
+                  <div>
+                    <p className="font-medium">Drop your image here or click to upload</p>
+                    <p className="text-sm text-muted-foreground">PNG, JPG, or WebP</p>
                   </div>
-                </Card>
-              </div>
+                </div>
+              </Card>
             </div>
           ) : (
             <Card className="relative p-4">
