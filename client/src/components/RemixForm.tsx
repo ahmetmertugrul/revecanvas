@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { remixInputSchema, RemixInput } from "@shared/schema";
@@ -21,6 +21,7 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>("");
   const [uploadedImageUrl, setUploadedImageUrl] = useState<string>("");
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
   const form = useForm<RemixInput>({
@@ -113,21 +114,23 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
           {!imagePreview ? (
             <div className="relative">
               <input
+                ref={fileInputRef}
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
-                className="hidden"
+                className="sr-only"
                 id="remix-reference-image-upload"
                 disabled={disabled}
                 data-testid="input-remix-file-upload"
               />
-              <label
-                htmlFor="remix-reference-image-upload"
+              <div
                 onDrop={handleDrop}
                 onDragOver={handleDragOver}
+                onClick={() => fileInputRef.current?.click()}
                 data-testid="dropzone-remix-upload"
+                className="cursor-pointer"
               >
-                <Card className="border-2 border-dashed p-8 text-center cursor-pointer hover-elevate transition-all">
+                <Card className="border-2 border-dashed p-8 text-center hover-elevate transition-all">
                   <div className="flex flex-col items-center gap-2">
                     <Upload className="h-12 w-12 text-muted-foreground" />
                     <div>
@@ -136,7 +139,7 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
                     </div>
                   </div>
                 </Card>
-              </label>
+              </div>
             </div>
           ) : (
             <Card className="relative p-4">

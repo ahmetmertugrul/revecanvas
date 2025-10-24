@@ -77,8 +77,8 @@ This application allows users to create stunning AI-generated images using three
 ## Recent Changes
 
 ### October 24, 2025
-- ✅ **Fixed upload click functionality**: Edit and Remix upload areas now use label wrapping for reliable click-to-upload (native browser behavior)
-- ✅ **Improved API key input design**: Eye icon repositioned to right side with better vertical alignment
+- ✅ **Fixed upload click functionality**: Edit and Remix upload areas now use ref-based onClick handler - clicking anywhere on upload card opens file picker reliably across all browsers
+- ✅ **Improved API key input design**: Eye icon repositioned to right side with better vertical alignment  
 - ✅ **Enhanced template visuals**: Increased image size (h-32→h-48), larger text (title: text-base font-semibold, prompt: text-sm), better spacing
 
 ### October 23, 2025
