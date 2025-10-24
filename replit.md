@@ -76,6 +76,11 @@ This application allows users to create stunning AI-generated images using three
 
 ## Recent Changes
 
+### October 24, 2025
+- ✅ **Fixed upload click functionality**: Edit and Remix upload areas now use label wrapping for reliable click-to-upload (native browser behavior)
+- ✅ **Improved API key input design**: Eye icon repositioned to right side with better vertical alignment
+- ✅ **Enhanced template visuals**: Increased image size (h-32→h-48), larger text (title: text-base font-semibold, prompt: text-sm), better spacing
+
 ### October 23, 2025
 - ✅ **Fixed upload functionality**: EditForm and RemixForm now support click-to-upload via Card onClick handlers (in addition to drag-and-drop)
 - ✅ **Enhanced API key security**: Completely removed localStorage/sessionStorage - API keys now stored ONLY in React state, never persisted
