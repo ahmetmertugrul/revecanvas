@@ -41,14 +41,14 @@ export function Header({ apiKey, onApiKeyChange }: HeaderProps) {
                 placeholder="Enter your FAL.ai API Key"
                 value={localKey}
                 onChange={(e) => handleKeyChange(e.target.value)}
-                className="pr-10 font-mono text-sm"
+                className="pr-12 font-mono text-sm"
                 data-testid="input-api-key"
               />
               <Button
                 type="button"
                 variant="ghost"
                 size="icon"
-                className="absolute right-0 top-0 h-full"
+                className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8"
                 onClick={() => setShowKey(!showKey)}
                 data-testid="button-toggle-key-visibility"
               >

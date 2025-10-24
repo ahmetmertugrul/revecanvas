@@ -66,7 +66,7 @@ export function TemplateGallery({ templates, onSelectTemplate, selectedTemplateI
         {templates.map((template) => (
           <Card
             key={template.id}
-            className={`p-4 cursor-pointer transition-all hover-elevate active-elevate-2 ${
+            className={`p-5 cursor-pointer transition-all hover-elevate active-elevate-2 ${
               selectedTemplateId === template.id ? "ring-2 ring-primary" : ""
             }`}
             onClick={() => onSelectTemplate(template)}
@@ -81,22 +81,22 @@ export function TemplateGallery({ templates, onSelectTemplate, selectedTemplateI
               }
             }}
           >
-            <div className="space-y-3">
+            <div className="space-y-4">
               {/* Visual Preview */}
-              <div className="relative h-32 rounded-md overflow-hidden bg-muted">
+              <div className="relative h-48 rounded-lg overflow-hidden bg-muted">
                 <img 
                   src={getCategoryImage(template.category)} 
                   alt={template.category}
                   className="w-full h-full object-cover"
                   data-testid={`img-template-preview-${template.id}`}
                 />
-                <div className="absolute top-2 right-2 bg-background/80 backdrop-blur-sm rounded-full p-1.5">
+                <div className="absolute top-3 right-3 bg-background/80 backdrop-blur-sm rounded-full p-2">
                   {getModelIcon(template.modelType)}
                 </div>
               </div>
 
               <div className="flex items-start justify-between gap-2">
-                <h3 className="font-medium text-sm line-clamp-2" data-testid={`text-template-title-${template.id}`}>
+                <h3 className="font-semibold text-base line-clamp-2" data-testid={`text-template-title-${template.id}`}>
                   {template.title}
                 </h3>
                 <div className="flex-shrink-0">
@@ -106,7 +106,7 @@ export function TemplateGallery({ templates, onSelectTemplate, selectedTemplateI
                 </div>
               </div>
               
-              <p className="text-xs text-muted-foreground line-clamp-2" data-testid={`text-template-prompt-${template.id}`}>
+              <p className="text-sm text-muted-foreground line-clamp-3" data-testid={`text-template-prompt-${template.id}`}>
                 {template.prompt}
               </p>
             </div>
