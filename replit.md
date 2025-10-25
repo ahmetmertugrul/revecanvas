@@ -76,6 +76,12 @@ This application allows users to create stunning AI-generated images using three
 
 ## Recent Changes
 
+### October 25, 2025
+- ✅ **Enlarged generated images display**: Changed grid from 3 columns to 2 columns (md:grid-cols-2), increased card size with aspect-[4/3] ratio for better visibility
+- ✅ **Added image modal/lightbox**: Clicking on any generated image opens a full-screen modal dialog showing the image at full resolution
+- ✅ **Modal features**: Full-size image preview, prompt display, dimensions info, download button in Turkish ("İndir")
+- ✅ **Improved user experience**: Larger images make it easier to see details, modal provides focused view of generated artwork
+
 ### October 24, 2025
 - ✅ **Fixed upload click functionality**: Edit and Remix upload areas now use ref-based onClick handler - clicking anywhere on upload card opens file picker reliably across all browsers
 - ✅ **Improved API key input design**: Eye icon repositioned to right side with better vertical alignment  
