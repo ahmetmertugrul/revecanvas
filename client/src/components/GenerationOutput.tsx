@@ -24,21 +24,23 @@ interface SelectedImage {
 }
 
 export function GenerationOutput({ results }: GenerationOutputProps) {
-  const [selectedImage, setSelectedImage] = useState<SelectedImage | null>(null);
+  const [selectedImage, setSelectedImage] = useState<SelectedImage | null>(
+    null,
+  );
   const handleDownload = async (url: string, filename: string) => {
     try {
       const response = await fetch(url);
       const blob = await response.blob();
       const blobUrl = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = blobUrl;
-      link.download = filename || 'reve-image.png';
+      link.download = filename || "reve-image.png";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(blobUrl);
     } catch (error) {
-      console.error('Download failed:', error);
+      console.error("Download failed:", error);
     }
   };
 
@@ -75,7 +77,9 @@ export function GenerationOutput({ results }: GenerationOutputProps) {
           <Sparkles className="h-16 w-16 opacity-20" />
           <div>
             <p className="text-lg font-medium">No images generated yet</p>
-            <p className="text-sm">Select a template or enter a prompt to get started</p>
+            <p className="text-sm">
+              Select a template or enter a prompt to get started
+            </p>
           </div>
         </div>
       </Card>
@@ -93,7 +97,10 @@ export function GenerationOutput({ results }: GenerationOutputProps) {
         </Badge>
       </div>
 
-      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+      <Dialog
+        open={!!selectedImage}
+        onOpenChange={() => setSelectedImage(null)}
+      >
         <DialogContent className="max-w-6xl max-h-[90vh] p-0">
           {selectedImage && (
             <div className="flex flex-col h-full">
@@ -112,11 +119,13 @@ export function GenerationOutput({ results }: GenerationOutputProps) {
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => handleDownload(selectedImage.url, selectedImage.fileName)}
+                    onClick={() =>
+                      handleDownload(selectedImage.url, selectedImage.fileName)
+                    }
                     data-testid="button-modal-download"
                   >
                     <Download className="mr-2 h-4 w-4" />
-                    İndir
+                    Download
                   </Button>
                 </div>
               </DialogHeader>
@@ -147,7 +156,10 @@ export function GenerationOutput({ results }: GenerationOutputProps) {
 
           {result.prompt && (
             <Card className="p-4 bg-muted/50">
-              <p className="text-sm" data-testid={`text-result-prompt-${resultIdx}`}>
+              <p
+                className="text-sm"
+                data-testid={`text-result-prompt-${resultIdx}`}
+              >
                 <span className="font-semibold">Prompt:</span> {result.prompt}
               </p>
             </Card>
@@ -159,13 +171,17 @@ export function GenerationOutput({ results }: GenerationOutputProps) {
                 key={imgIdx}
                 className="group relative overflow-hidden cursor-pointer hover-elevate transition-all"
                 data-testid={`card-image-${resultIdx}-${imgIdx}`}
-                onClick={() => setSelectedImage({
-                  url: image.url,
-                  prompt: result.prompt || "Generated image",
-                  fileName: image.file_name || `reve-${result.model}-${Date.now()}.png`,
-                  width: image.width,
-                  height: image.height,
-                })}
+                onClick={() =>
+                  setSelectedImage({
+                    url: image.url,
+                    prompt: result.prompt || "Generated image",
+                    fileName:
+                      image.file_name ||
+                      `reve-${result.model}-${Date.now()}.png`,
+                    width: image.width,
+                    height: image.height,
+                  })
+                }
               >
                 <div className="aspect-[4/3] relative">
                   <img
@@ -174,7 +190,7 @@ export function GenerationOutput({ results }: GenerationOutputProps) {
                     className="w-full h-full object-cover"
                     data-testid={`img-generated-${resultIdx}-${imgIdx}`}
                   />
-                  
+
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
                     <Button
                       variant="secondary"
@@ -183,7 +199,8 @@ export function GenerationOutput({ results }: GenerationOutputProps) {
                         e.stopPropagation();
                         handleDownload(
                           image.url,
-                          image.file_name || `reve-${result.model}-${Date.now()}.png`
+                          image.file_name ||
+                            `reve-${result.model}-${Date.now()}.png`,
                         );
                       }}
                       className="backdrop-blur-md"
@@ -195,7 +212,7 @@ export function GenerationOutput({ results }: GenerationOutputProps) {
                   </div>
                 </div>
 
-                {(image.width && image.height) && (
+                {image.width && image.height && (
                   <div className="p-3 bg-muted/50 text-xs text-muted-foreground text-center">
                     {image.width} × {image.height}
                   </div>

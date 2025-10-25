@@ -77,6 +77,7 @@ This application allows users to create stunning AI-generated images using three
 ## Recent Changes
 
 ### October 25, 2025
+- ✅ **Fixed Edit model payload limit error**: Increased Express body-parser limit to 50MB to handle large base64 encoded images - Edit functionality now works properly
 - ✅ **Enlarged generated images display**: Changed grid from 3 columns to 2 columns (md:grid-cols-2), increased card size with aspect-[4/3] ratio for better visibility
 - ✅ **Added image modal/lightbox**: Clicking on any generated image opens a full-screen modal dialog showing the image at full resolution
 - ✅ **Modal features**: Full-size image preview, prompt display, dimensions info, download button in Turkish ("İndir")
