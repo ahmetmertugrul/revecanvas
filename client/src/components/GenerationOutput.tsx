@@ -1,14 +1,30 @@
+import { useState } from "react";
 import { GenerationResult } from "@shared/schema";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Download, Sparkles, Pencil, Shuffle } from "lucide-react";
+import { Download, Sparkles, Pencil, Shuffle, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface GenerationOutputProps {
   results: GenerationResult[];
 }
 
+interface SelectedImage {
+  url: string;
+  prompt: string;
+  fileName: string;
+  width?: number;
+  height?: number;
+}
+
 export function GenerationOutput({ results }: GenerationOutputProps) {
+  const [selectedImage, setSelectedImage] = useState<SelectedImage | null>(null);
   const handleDownload = async (url: string, filename: string) => {
     try {
       const response = await fetch(url);
@@ -77,6 +93,46 @@ export function GenerationOutput({ results }: GenerationOutputProps) {
         </Badge>
       </div>
 
+      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="max-w-6xl max-h-[90vh] p-0">
+          {selectedImage && (
+            <div className="flex flex-col h-full">
+              <DialogHeader className="px-6 py-4 border-b">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1 min-w-0">
+                    <DialogTitle className="text-base line-clamp-2">
+                      {selectedImage.prompt}
+                    </DialogTitle>
+                    {selectedImage.width && selectedImage.height && (
+                      <p className="text-sm text-muted-foreground mt-1">
+                        {selectedImage.width} × {selectedImage.height}
+                      </p>
+                    )}
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => handleDownload(selectedImage.url, selectedImage.fileName)}
+                    data-testid="button-modal-download"
+                  >
+                    <Download className="mr-2 h-4 w-4" />
+                    İndir
+                  </Button>
+                </div>
+              </DialogHeader>
+              <div className="flex-1 overflow-auto p-6">
+                <img
+                  src={selectedImage.url}
+                  alt={selectedImage.prompt}
+                  className="w-full h-auto rounded-lg"
+                  data-testid="img-modal-preview"
+                />
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
       {results.map((result, resultIdx) => (
         <div key={resultIdx} className="space-y-4">
           <div className="flex items-center gap-2">
@@ -97,14 +153,21 @@ export function GenerationOutput({ results }: GenerationOutputProps) {
             </Card>
           )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {result.images.map((image, imgIdx) => (
               <Card
                 key={imgIdx}
-                className="group relative overflow-hidden"
+                className="group relative overflow-hidden cursor-pointer hover-elevate transition-all"
                 data-testid={`card-image-${resultIdx}-${imgIdx}`}
+                onClick={() => setSelectedImage({
+                  url: image.url,
+                  prompt: result.prompt || "Generated image",
+                  fileName: image.file_name || `reve-${result.model}-${Date.now()}.png`,
+                  width: image.width,
+                  height: image.height,
+                })}
               >
-                <div className="aspect-square relative">
+                <div className="aspect-[4/3] relative">
                   <img
                     src={image.url}
                     alt={result.prompt || "Generated image"}
@@ -112,14 +175,17 @@ export function GenerationOutput({ results }: GenerationOutputProps) {
                     data-testid={`img-generated-${resultIdx}-${imgIdx}`}
                   />
                   
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
                     <Button
                       variant="secondary"
                       size="sm"
-                      onClick={() => handleDownload(
-                        image.url,
-                        image.file_name || `reve-${result.model}-${Date.now()}.png`
-                      )}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDownload(
+                          image.url,
+                          image.file_name || `reve-${result.model}-${Date.now()}.png`
+                        );
+                      }}
                       className="backdrop-blur-md"
                       data-testid={`button-download-${resultIdx}-${imgIdx}`}
                     >
