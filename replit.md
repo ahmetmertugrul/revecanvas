@@ -76,6 +76,13 @@ This application allows users to create stunning AI-generated images using three
 
 ## Recent Changes
 
+### October 26, 2025
+- ✅ **Added multi-image upload for Remix**: Remix model now accepts up to 10 reference images instead of just 1
+- ✅ **Image grid preview**: Uploaded images display in a responsive grid layout (2-4 columns) with hover effects
+- ✅ **Turkish localization for Remix**: All Remix form labels, buttons, and messages now in Turkish
+- ✅ **Individual image removal**: Each uploaded image has a remove button that appears on hover
+- ✅ **Add more images card**: Convenient "+" card to add additional images after initial upload
+
 ### October 25, 2025
 - ✅ **Fixed Edit model payload limit error**: Increased Express body-parser limit to 50MB to handle large base64 encoded images - Edit functionality now works properly
 - ✅ **Enlarged generated images display**: Changed grid from 3 columns to 2 columns (md:grid-cols-2), increased card size with aspect-[4/3] ratio for better visibility
