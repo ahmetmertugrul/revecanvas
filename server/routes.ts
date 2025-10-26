@@ -153,8 +153,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Validate input
       const validatedInput = remixInputSchema.parse(input);
 
-      // Upload image if it's a data URL
-      const imageUrl = await uploadImageIfNeeded(validatedInput.image_url, apiKey);
+      // Upload all images if they are data URLs
+      const uploadedImageUrls = await Promise.all(
+        validatedInput.image_urls.map(url => uploadImageIfNeeded(url, apiKey))
+      );
 
       // Configure FAL client with user's API key
       fal.config({
@@ -165,7 +167,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const result = await fal.subscribe("fal-ai/reve/remix", {
         input: {
           prompt: validatedInput.prompt,
-          image_urls: [imageUrl],
+          image_urls: uploadedImageUrls,
           aspect_ratio: validatedInput.aspect_ratio,
           num_images: validatedInput.num_images,
           output_format: validatedInput.output_format,
