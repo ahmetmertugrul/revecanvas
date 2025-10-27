@@ -52,8 +52,8 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
     
     if (imageFiles.length === 0) {
       toast({
-        title: "Geçersiz dosya",
-        description: "Lütfen resim dosyası seçin",
+        title: "Invalid file",
+        description: "Please select an image file",
         variant: "destructive",
       });
       return;
@@ -61,8 +61,8 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
 
     if (imagePreviews.length + imageFiles.length > 10) {
       toast({
-        title: "Çok fazla resim",
-        description: "Maksimum 10 resim yükleyebilirsiniz",
+        title: "Too many images",
+        description: "Maximum 10 images allowed",
         variant: "destructive",
       });
       return;
@@ -136,8 +136,8 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
   const handleSubmit = (data: RemixInput) => {
     if (imagePreviews.length === 0) {
       toast({
-        title: "Resim gerekli",
-        description: "Lütfen en az 1 referans resim yükleyin",
+        title: "Image required",
+        description: "Please upload at least 1 reference image",
         variant: "destructive",
       });
       return;
@@ -151,11 +151,11 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <FormLabel className="text-base font-semibold">
-              Referans Resimleri Yükle
+              Upload Reference Images
             </FormLabel>
             {imagePreviews.length > 0 && (
               <span className="text-sm text-muted-foreground">
-                {imagePreviews.length} / 10 resim
+                {imagePreviews.length} / 10 images
               </span>
             )}
           </div>
@@ -203,7 +203,7 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
                 >
                   <div className="flex flex-col items-center gap-2 text-muted-foreground pointer-events-none">
                     <Plus className="h-8 w-8" />
-                    <span className="text-xs font-medium">Daha Ekle</span>
+                    <span className="text-xs font-medium">Add More</span>
                   </div>
                 </Card>
               )}
@@ -221,8 +221,8 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
               <div className="flex flex-col items-center gap-2 pointer-events-none">
                 <Upload className="h-12 w-12 text-muted-foreground" />
                 <div>
-                  <p className="font-medium">Referans resimlerinizi buraya sürükleyin veya tıklayın</p>
-                  <p className="text-sm text-muted-foreground">PNG, JPG, veya WebP (Maksimum 10 resim)</p>
+                  <p className="font-medium">Drop your reference images here or click to upload</p>
+                  <p className="text-sm text-muted-foreground">PNG, JPG, or WebP (Maximum 10 images)</p>
                 </div>
               </div>
             </Card>
@@ -234,11 +234,11 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
           name="prompt"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-base font-semibold">Stil Prompt</FormLabel>
+              <FormLabel className="text-base font-semibold">Style Prompt</FormLabel>
               <FormControl>
                 <Textarea
                   {...field}
-                  placeholder="Uygulamak istediğiniz stili tanımlayın..."
+                  placeholder="Describe the style you want to apply..."
                   className="min-h-24 md:min-h-32 resize-none text-base"
                   disabled={disabled}
                   data-testid="input-remix-prompt"
@@ -255,7 +255,7 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
             name="aspect_ratio"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>En-Boy Oranı</FormLabel>
+                <FormLabel>Aspect Ratio</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
@@ -263,17 +263,17 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
                 >
                   <FormControl>
                     <SelectTrigger data-testid="select-remix-aspect-ratio">
-                      <SelectValue placeholder="Oran seçin" />
+                      <SelectValue placeholder="Select ratio" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="1:1">1:1 (Kare)</SelectItem>
-                    <SelectItem value="16:9">16:9 (Yatay)</SelectItem>
-                    <SelectItem value="9:16">9:16 (Dikey)</SelectItem>
-                    <SelectItem value="3:2">3:2 (Fotoğraf)</SelectItem>
-                    <SelectItem value="2:3">2:3 (Dikey)</SelectItem>
-                    <SelectItem value="4:3">4:3 (Klasik)</SelectItem>
-                    <SelectItem value="3:4">3:4 (Dikey)</SelectItem>
+                    <SelectItem value="1:1">1:1 (Square)</SelectItem>
+                    <SelectItem value="16:9">16:9 (Landscape)</SelectItem>
+                    <SelectItem value="9:16">9:16 (Portrait)</SelectItem>
+                    <SelectItem value="3:2">3:2 (Photo)</SelectItem>
+                    <SelectItem value="2:3">2:3 (Portrait)</SelectItem>
+                    <SelectItem value="4:3">4:3 (Classic)</SelectItem>
+                    <SelectItem value="3:4">3:4 (Portrait)</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -286,7 +286,7 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
             name="num_images"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Resim Sayısı</FormLabel>
+                <FormLabel>Number of Images</FormLabel>
                 <Select
                   onValueChange={(val) => field.onChange(parseInt(val))}
                   value={field.value.toString()}
@@ -294,14 +294,14 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
                 >
                   <FormControl>
                     <SelectTrigger data-testid="select-remix-num-images">
-                      <SelectValue placeholder="Sayı seçin" />
+                      <SelectValue placeholder="Select number" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="1">1 Resim</SelectItem>
-                    <SelectItem value="2">2 Resim</SelectItem>
-                    <SelectItem value="3">3 Resim</SelectItem>
-                    <SelectItem value="4">4 Resim</SelectItem>
+                    <SelectItem value="1">1 Image</SelectItem>
+                    <SelectItem value="2">2 Images</SelectItem>
+                    <SelectItem value="3">3 Images</SelectItem>
+                    <SelectItem value="4">4 Images</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -314,7 +314,7 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
             name="output_format"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Çıktı Formatı</FormLabel>
+                <FormLabel>Output Format</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
@@ -322,7 +322,7 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
                 >
                   <FormControl>
                     <SelectTrigger data-testid="select-remix-output-format">
-                      <SelectValue placeholder="Format seçin" />
+                      <SelectValue placeholder="Select format" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -344,7 +344,7 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
           data-testid="button-remix-generate"
         >
           <Shuffle className="mr-2 h-4 w-4" />
-          {isGenerating ? "Remixleniyor..." : "Remix Yap"}
+          {isGenerating ? "Remixing..." : "Remix Image"}
         </Button>
       </form>
     </Form>
