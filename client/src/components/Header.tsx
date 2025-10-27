@@ -28,12 +28,18 @@ export function Header({ apiKey, onApiKeyChange }: HeaderProps) {
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex h-16 items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <Sparkles className="h-6 w-6 text-primary" data-testid="icon-logo" />
-            <h1 className="text-xl md:text-2xl font-bold" data-testid="text-app-title">
-              Reve AI
+            <Sparkles
+              className="h-6 w-6 text-primary"
+              data-testid="icon-logo"
+            />
+            <h1
+              className="text-xl md:text-2xl font-bold"
+              data-testid="text-app-title"
+            >
+              Reve Canvas
             </h1>
           </div>
-          
+
           <div className="flex items-center gap-2 flex-1 max-w-md">
             <div className="relative flex-1">
               <Input
@@ -62,12 +68,16 @@ export function Header({ apiKey, onApiKeyChange }: HeaderProps) {
           </div>
         </div>
       </div>
-      
+
       {apiKey && (
         <div className="border-t bg-muted/50 py-1">
           <div className="container mx-auto px-4 md:px-8">
-            <p className="text-xs text-muted-foreground text-center" data-testid="text-security-notice">
-              🔒 Your API key is kept in memory only and sent directly to FAL.ai - never stored
+            <p
+              className="text-xs text-muted-foreground text-center"
+              data-testid="text-security-notice"
+            >
+              🔒 Your API key is kept in memory only and sent directly to FAL.ai
+              - never stored
             </p>
           </div>
         </div>

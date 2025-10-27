@@ -19,7 +19,11 @@ interface TemplateGalleryProps {
   selectedTemplateId?: string;
 }
 
-export function TemplateGallery({ templates, onSelectTemplate, selectedTemplateId }: TemplateGalleryProps) {
+export function TemplateGallery({
+  templates,
+  onSelectTemplate,
+  selectedTemplateId,
+}: TemplateGalleryProps) {
   const getModelIcon = (modelType: string) => {
     switch (modelType) {
       case "text-to-image":
@@ -54,14 +58,17 @@ export function TemplateGallery({ templates, onSelectTemplate, selectedTemplateI
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold" data-testid="text-templates-heading">
+        <h2
+          className="text-lg font-semibold"
+          data-testid="text-templates-heading"
+        >
           Quick Start Templates
         </h2>
         <Badge variant="secondary" data-testid="badge-template-count">
           {templates.length} templates
         </Badge>
       </div>
-      
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {templates.map((template) => (
           <Card
@@ -75,7 +82,7 @@ export function TemplateGallery({ templates, onSelectTemplate, selectedTemplateI
             role="button"
             tabIndex={0}
             onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
+              if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
                 onSelectTemplate(template);
               }
@@ -83,9 +90,9 @@ export function TemplateGallery({ templates, onSelectTemplate, selectedTemplateI
           >
             <div className="space-y-4">
               {/* Visual Preview */}
-              <div className="relative h-48 rounded-lg overflow-hidden bg-muted">
-                <img 
-                  src={getCategoryImage(template.category)} 
+              <div className="relative h-64 rounded-lg overflow-hidden bg-muted">
+                <img
+                  src={getCategoryImage(template.category)}
                   alt={template.category}
                   className="w-full h-full object-cover"
                   data-testid={`img-template-preview-${template.id}`}
@@ -96,7 +103,10 @@ export function TemplateGallery({ templates, onSelectTemplate, selectedTemplateI
               </div>
 
               <div className="flex items-start justify-between gap-2">
-                <h3 className="font-semibold text-base line-clamp-2" data-testid={`text-template-title-${template.id}`}>
+                <h3
+                  className="font-semibold text-base line-clamp-2"
+                  data-testid={`text-template-title-${template.id}`}
+                >
                   {template.title}
                 </h3>
                 <div className="flex-shrink-0">
@@ -105,8 +115,11 @@ export function TemplateGallery({ templates, onSelectTemplate, selectedTemplateI
                   </Badge>
                 </div>
               </div>
-              
-              <p className="text-sm text-muted-foreground line-clamp-3" data-testid={`text-template-prompt-${template.id}`}>
+
+              <p
+                className="text-sm text-muted-foreground line-clamp-3"
+                data-testid={`text-template-prompt-${template.id}`}
+              >
                 {template.prompt}
               </p>
             </div>
