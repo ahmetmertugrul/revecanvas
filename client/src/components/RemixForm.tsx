@@ -186,7 +186,7 @@ export function RemixForm({ onGenerate, isGenerating, disabled, initialPrompt }:
                     type="button"
                     variant="destructive"
                     size="icon"
-                    className="absolute top-1 right-1 h-7 w-7 opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="absolute top-1 right-1 h-7 w-7 shadow-md"
                     onClick={() => removeImage(preview.id)}
                     data-testid={`button-remove-image-${preview.id}`}
                   >
