@@ -69,11 +69,11 @@ export function TemplateGallery({
         </Badge>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {templates.map((template) => (
           <Card
             key={template.id}
-            className={`p-5 cursor-pointer transition-all hover-elevate active-elevate-2 ${
+            className={`p-6 cursor-pointer transition-all hover-elevate active-elevate-2 ${
               selectedTemplateId === template.id ? "ring-2 ring-primary" : ""
             }`}
             onClick={() => onSelectTemplate(template)}
@@ -90,7 +90,7 @@ export function TemplateGallery({
           >
             <div className="space-y-4">
               {/* Visual Preview */}
-              <div className="relative h-64 rounded-lg overflow-hidden bg-muted">
+              <div className="relative aspect-square rounded-lg overflow-hidden bg-muted">
                 <img
                   src={getCategoryImage(template.category)}
                   alt={template.category}
