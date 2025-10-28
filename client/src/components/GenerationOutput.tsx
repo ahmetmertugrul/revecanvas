@@ -101,10 +101,10 @@ export function GenerationOutput({ results }: GenerationOutputProps) {
         open={!!selectedImage}
         onOpenChange={() => setSelectedImage(null)}
       >
-        <DialogContent className="max-w-6xl max-h-[90vh] p-0">
+        <DialogContent className="max-w-7xl max-h-[95vh] p-0 flex flex-col">
           {selectedImage && (
-            <div className="flex flex-col h-full">
-              <DialogHeader className="px-6 py-4 border-b">
+            <>
+              <DialogHeader className="px-6 py-4 border-b shrink-0">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
                     <DialogTitle className="text-base line-clamp-2">
@@ -129,15 +129,15 @@ export function GenerationOutput({ results }: GenerationOutputProps) {
                   </Button>
                 </div>
               </DialogHeader>
-              <div className="flex-1 overflow-auto p-6">
+              <div className="overflow-y-auto flex-1 p-6">
                 <img
                   src={selectedImage.url}
                   alt={selectedImage.prompt}
-                  className="w-full h-auto rounded-lg"
+                  className="w-full h-auto rounded-lg mx-auto"
                   data-testid="img-modal-preview"
                 />
               </div>
-            </div>
+            </>
           )}
         </DialogContent>
       </Dialog>
