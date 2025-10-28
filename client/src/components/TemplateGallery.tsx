@@ -69,11 +69,11 @@ export function TemplateGallery({
         </Badge>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8">
         {templates.map((template) => (
           <Card
             key={template.id}
-            className={`p-6 cursor-pointer transition-all hover-elevate active-elevate-2 ${
+            className={`p-8 cursor-pointer transition-all hover-elevate active-elevate-2 ${
               selectedTemplateId === template.id ? "ring-2 ring-primary" : ""
             }`}
             onClick={() => onSelectTemplate(template)}
@@ -88,7 +88,7 @@ export function TemplateGallery({
               }
             }}
           >
-            <div className="space-y-4">
+            <div className="space-y-5">
               {/* Visual Preview */}
               <div className="relative aspect-square rounded-lg overflow-hidden bg-muted">
                 <img
@@ -97,14 +97,14 @@ export function TemplateGallery({
                   className="w-full h-full object-cover"
                   data-testid={`img-template-preview-${template.id}`}
                 />
-                <div className="absolute top-3 right-3 bg-background/80 backdrop-blur-sm rounded-full p-2">
+                <div className="absolute top-4 right-4 bg-background/80 backdrop-blur-sm rounded-full p-2.5">
                   {getModelIcon(template.modelType)}
                 </div>
               </div>
 
-              <div className="flex items-start justify-between gap-2">
+              <div className="flex items-start justify-between gap-3">
                 <h3
-                  className="font-semibold text-base line-clamp-2"
+                  className="font-semibold text-lg"
                   data-testid={`text-template-title-${template.id}`}
                 >
                   {template.title}
@@ -117,7 +117,7 @@ export function TemplateGallery({
               </div>
 
               <p
-                className="text-sm text-muted-foreground line-clamp-3"
+                className="text-base text-muted-foreground line-clamp-4"
                 data-testid={`text-template-prompt-${template.id}`}
               >
                 {template.prompt}
