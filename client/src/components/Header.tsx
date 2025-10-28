@@ -26,7 +26,7 @@ export function Header({ apiKey, onApiKeyChange }: HeaderProps) {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="flex h-16 items-center justify-between gap-4">
+        <div className="flex flex-col gap-3 py-4">
           <div className="flex items-center gap-2">
             <Sparkles
               className="h-6 w-6 text-primary"
@@ -40,21 +40,21 @@ export function Header({ apiKey, onApiKeyChange }: HeaderProps) {
             </h1>
           </div>
 
-          <div className="flex items-center gap-2 flex-1 max-w-md">
+          <div className="flex items-center gap-2 max-w-md">
             <div className="relative flex-1">
               <Input
                 type={showKey ? "text" : "password"}
                 placeholder="Enter your FAL.ai API Key"
                 value={localKey}
                 onChange={(e) => handleKeyChange(e.target.value)}
-                className="pr-12 font-mono text-sm"
+                className="pr-10 font-mono text-sm"
                 data-testid="input-api-key"
               />
               <Button
                 type="button"
                 variant="ghost"
                 size="icon"
-                className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8"
+                className="absolute right-0 top-0 h-full w-10 hover:bg-transparent"
                 onClick={() => setShowKey(!showKey)}
                 data-testid="button-toggle-key-visibility"
               >
