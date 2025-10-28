@@ -20,6 +20,10 @@ import marvelImg from "@assets/stock_images/marvel_superhero_com_2f2e8408.jpg";
 import origamiImg from "@assets/stock_images/origami_paper_folded_04498397.jpg";
 import vaporwaveImg from "@assets/stock_images/vaporwave_90s_retro__32e66da5.jpg";
 import legoImg from "@assets/stock_images/lego_brick_toy_const_a5d52c92.jpg";
+import ghibliImg from "@assets/stock_images/studio_ghibli_animat_b997f242.jpg";
+import stickerImg from "@assets/stock_images/cute_sticker_design__52dd2c23.jpg";
+import storybookImg from "@assets/stock_images/fantasy_storybook_il_b72a8e64.jpg";
+import puppetImg from "@assets/stock_images/puppet_felt_handmade_6b7d4244.jpg";
 
 interface TemplateGalleryProps {
   templates: PromptTemplate[];
@@ -54,6 +58,10 @@ export function TemplateGallery({
       "remix-8": origamiImg,
       "remix-9": vaporwaveImg,
       "remix-10": legoImg,
+      "remix-11": ghibliImg,
+      "remix-12": stickerImg,
+      "remix-13": storybookImg,
+      "remix-14": puppetImg,
     };
     
     // If template has a special image, use it

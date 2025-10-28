@@ -160,6 +160,34 @@ export const promptTemplates: PromptTemplate[] = [
     category: "art",
     modelType: "remix",
   },
+  {
+    id: "remix-11",
+    title: "Studio Ghibli",
+    prompt: "Soft lighting, lush landscapes, and a magic touch give this style its signature storybook feel. Inspired by the gentle, detailed animation of Studio Ghibli films, it transforms your photo into a peaceful, whimsical world filled with wonder and quiet adventure.",
+    category: "art",
+    modelType: "remix",
+  },
+  {
+    id: "remix-12",
+    title: "Sticker",
+    prompt: "Bold outlines, bright colors, and a playful cutout look make this style feel like a fun, peel-and-stick design. It simplifies your photo into a clean, eye-catching image, perfect for digital stickers, journals, or adding personality to your projects.",
+    category: "art",
+    modelType: "remix",
+  },
+  {
+    id: "remix-13",
+    title: "Fantasy Storybook",
+    prompt: "Like a page pulled from a magical tale, this style transforms your photo into a whimsical world of castles, forests, and enchanted creatures. Soft textures, rich colors, and fairytale-like details give your image a dreamy, otherworldly feel, perfect for sparking the imagination.",
+    category: "fantasy",
+    modelType: "remix",
+  },
+  {
+    id: "remix-14",
+    title: "Puppet",
+    prompt: "Soft fabrics, stitched features, and movable joints give this style the feel of a handmade puppet show. Your photo takes on a theatrical, storybook charm, like a scene brought to life on stage with characters crafted from felt, buttons, and imagination.",
+    category: "art",
+    modelType: "remix",
+  },
 ];
 
 export const getTemplatesByModel = (modelType: string) => {
