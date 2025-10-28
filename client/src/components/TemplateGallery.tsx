@@ -50,26 +50,30 @@ export function TemplateGallery({
   };
 
   const getTemplateImage = (template: PromptTemplate) => {
-    // Special images for new style templates
-    const templateImages: Record<string, string> = {
-      "remix-5": animeImg,
-      "remix-6": pixarImg,
-      "remix-7": marvelImg,
-      "remix-8": origamiImg,
-      "remix-9": vaporwaveImg,
-      "remix-10": legoImg,
-      "remix-11": ghibliImg,
-      "remix-12": stickerImg,
-      "remix-13": storybookImg,
-      "remix-14": puppetImg,
+    // Map by template title (same across all models)
+    const styleImages: Record<string, string> = {
+      "Watercolor Style": artImg,
+      "Cyberpunk Aesthetic": fantasyImg,
+      "Oil Painting Classic": artImg,
+      "Minimalist Design": abstractImg,
+      "Japanese Anime": animeImg,
+      "Pixar": pixarImg,
+      "Marvel": marvelImg,
+      "Origami": origamiImg,
+      "Vaporwave / 90's": vaporwaveImg,
+      "LEGO": legoImg,
+      "Studio Ghibli": ghibliImg,
+      "Sticker": stickerImg,
+      "Fantasy Storybook": storybookImg,
+      "Puppet": puppetImg,
     };
     
-    // If template has a special image, use it
-    if (templateImages[template.id]) {
-      return templateImages[template.id];
+    // If template title matches a style, use its image
+    if (styleImages[template.title]) {
+      return styleImages[template.title];
     }
     
-    // Otherwise use category-based images
+    // Fallback to category-based images
     const categoryImages: Record<string, string> = {
       landscape: landscapeImg,
       portrait: portraitImg,
