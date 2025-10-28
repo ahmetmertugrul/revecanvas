@@ -118,6 +118,48 @@ export const promptTemplates: PromptTemplate[] = [
     category: "abstract",
     modelType: "remix",
   },
+  {
+    id: "remix-5",
+    title: "Japanese Anime",
+    prompt: "The Japanese anime style brings your photo to life with anime's bold, colorful energy. It captures the unique charm of animated storytelling from Japan, with stylized features, dynamic poses, and a touch of drama or fantasy.",
+    category: "art",
+    modelType: "remix",
+  },
+  {
+    id: "remix-6",
+    title: "Pixar",
+    prompt: "Filled with charm and imagination, this style turns your photo into something straight out of a Pixar film. Characters become more expressive, scenes feel animated and alive, and everything carries a warm, storybook quality that's both fun and heartfelt.",
+    category: "art",
+    modelType: "remix",
+  },
+  {
+    id: "remix-7",
+    title: "Marvel",
+    prompt: "Packed with intensity and heroic flair, this style reimagines your photo as part of the Marvel universe. Expect dynamic poses, cinematic lighting, and larger-than-life energy that captures the excitement of epic battles and legendary characters.",
+    category: "fantasy",
+    modelType: "remix",
+  },
+  {
+    id: "remix-8",
+    title: "Origami",
+    prompt: "Clean folds, sharp edges, and a minimalist charm define this style, turning your photo into a scene crafted entirely from paper. With a delicate, geometric look, it captures the elegance of traditional origami while giving your image a fresh and artistic twist.",
+    category: "abstract",
+    modelType: "remix",
+  },
+  {
+    id: "remix-9",
+    title: "Vaporwave / 90's",
+    prompt: "Dreamy neon colors, glitchy textures, and retro-futuristic vibes define this throwback style. Inspired by 90s aesthetics and early internet culture, it gives your photo a surreal, nostalgic feel, like a lost scene from an old VHS tape or a synthwave album cover.",
+    category: "abstract",
+    modelType: "remix",
+  },
+  {
+    id: "remix-10",
+    title: "LEGO",
+    prompt: "With blocky shapes, bright colors, and a playful twist, this style rebuilds your photo as if made entirely from LEGO bricks. Characters become minifigures, and scenes take on a toy-like charm full of fun and creativity.",
+    category: "art",
+    modelType: "remix",
+  },
 ];
 
 export const getTemplatesByModel = (modelType: string) => {

@@ -13,6 +13,14 @@ import fantasyImg from "@assets/generated_images/Magical_fantasy_forest_scene_bc
 import natureImg from "@assets/generated_images/Ocean_wave_nature_seascape_050ff4b3.png";
 import artImg from "@assets/generated_images/Digital_art_portrait_illustration_1dc8de79.png";
 
+// Import new style preview images
+import animeImg from "@assets/stock_images/anime_character_port_b38709d7.jpg";
+import pixarImg from "@assets/stock_images/pixar_3d_animated_ch_8e9de0f6.jpg";
+import marvelImg from "@assets/stock_images/marvel_superhero_com_2f2e8408.jpg";
+import origamiImg from "@assets/stock_images/origami_paper_folded_04498397.jpg";
+import vaporwaveImg from "@assets/stock_images/vaporwave_90s_retro__32e66da5.jpg";
+import legoImg from "@assets/stock_images/lego_brick_toy_const_a5d52c92.jpg";
+
 interface TemplateGalleryProps {
   templates: PromptTemplate[];
   onSelectTemplate: (template: PromptTemplate) => void;
@@ -37,7 +45,23 @@ export function TemplateGallery({
     }
   };
 
-  const getCategoryImage = (category: string) => {
+  const getTemplateImage = (template: PromptTemplate) => {
+    // Special images for new style templates
+    const templateImages: Record<string, string> = {
+      "remix-5": animeImg,
+      "remix-6": pixarImg,
+      "remix-7": marvelImg,
+      "remix-8": origamiImg,
+      "remix-9": vaporwaveImg,
+      "remix-10": legoImg,
+    };
+    
+    // If template has a special image, use it
+    if (templateImages[template.id]) {
+      return templateImages[template.id];
+    }
+    
+    // Otherwise use category-based images
     const categoryImages: Record<string, string> = {
       landscape: landscapeImg,
       portrait: portraitImg,
@@ -48,7 +72,7 @@ export function TemplateGallery({
       nature: natureImg,
       art: artImg,
     };
-    return categoryImages[category] || abstractImg;
+    return categoryImages[template.category] || abstractImg;
   };
 
   if (templates.length === 0) {
@@ -92,7 +116,7 @@ export function TemplateGallery({
               {/* Visual Preview */}
               <div className="relative aspect-square rounded-lg overflow-hidden bg-muted">
                 <img
-                  src={getCategoryImage(template.category)}
+                  src={getTemplateImage(template)}
                   alt={template.category}
                   className="w-full h-full object-cover"
                   data-testid={`img-template-preview-${template.id}`}
