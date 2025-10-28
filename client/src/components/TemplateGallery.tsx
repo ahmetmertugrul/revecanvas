@@ -112,7 +112,7 @@ export function TemplateGallery({
               }
             }}
           >
-            <div className="space-y-5">
+            <div className="space-y-4">
               {/* Visual Preview */}
               <div className="relative aspect-square rounded-lg overflow-hidden bg-muted">
                 <img
@@ -139,13 +139,6 @@ export function TemplateGallery({
                   </Badge>
                 </div>
               </div>
-
-              <p
-                className="text-base text-muted-foreground line-clamp-4"
-                data-testid={`text-template-prompt-${template.id}`}
-              >
-                {template.prompt}
-              </p>
             </div>
           </Card>
         ))}
