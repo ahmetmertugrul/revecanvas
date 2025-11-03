@@ -1,0 +1,72 @@
+==> Downloading cache...
+==> Cloning from https://github.com/ahmetmertugrul/revecanvas
+==> Checking out commit 012332e421ee5379612cba947082f91ff8234363 in branch main
+==> Transferred 200MB in 4s. Extraction took 4s.
+==> Installing dependencies with npm...
+==> Using Node.js version 22.16.0 (default)
+==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+up to date, audited 485 packages in 1s
+64 packages are looking for funding
+  run `npm fund` for details
+8 vulnerabilities (3 low, 5 moderate)
+To address issues that do not require attention, run:
+  npm audit fix
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+Run `npm audit` for details.
+up to date, audited 485 packages in 1s
+64 packages are looking for funding
+  run `npm fund` for details
+8 vulnerabilities (3 low, 5 moderate)
+To address issues that do not require attention, run:
+  npm audit fix
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+Run `npm audit` for details.
+==> Running build command 'npm install && npm run build'...
+up to date, audited 485 packages in 959ms
+64 packages are looking for funding
+  run `npm fund` for details
+8 vulnerabilities (3 low, 5 moderate)
+To address issues that do not require attention, run:
+  npm audit fix
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+Run `npm audit` for details.
+> rest-express@1.0.0 build
+> vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+vite v5.4.20 building for production...
+transforming...
+Browserslist: browsers data (caniuse-lite) is 13 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+✓ 1753 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist/public/index.html                                                                2.59 kB │ gzip:   0.93 kB
+../dist/public/assets/puppet_felt_handmade_6b7d4244-D_vFRV5Y.jpg                        71.30 kB
+../dist/public/assets/origami_paper_folded_04498397-GQKSNTeS.jpg                        97.02 kB
+../dist/public/assets/vaporwave_90s_retro__32e66da5-BrQJWtrn.jpg                       131.88 kB
+../dist/public/assets/anime_character_port_b38709d7-BmFHa_xU.jpg                       168.81 kB
+../dist/public/assets/pixar_3d_animated_ch_8e9de0f6-BbGXdykL.jpg                       187.12 kB
+../dist/public/assets/fantasy_storybook_il_b72a8e64-CD_dzI_d.jpg                       270.81 kB
+../dist/public/assets/studio_ghibli_animat_b997f242-CUM6NSdk.jpg                       314.83 kB
+../dist/public/assets/cute_sticker_design__52dd2c23-BQ7uSslf.jpg                       387.29 kB
+../dist/public/assets/lego_brick_toy_const_a5d52c92-DD5l8ulF.jpg                       445.89 kB
+../dist/public/assets/marvel_superhero_com_2f2e8408-Dd_-nu6x.jpg                       628.49 kB
+../dist/public/assets/Product_photography_bluetooth_speaker_91ddc4fc-CyQaMkyr.png      720.36 kB
+../dist/public/assets/Abstract_fluid_art_colors_c6d042e8-ja_WxHQW.png                1,249.71 kB
+../dist/public/assets/Modern_architecture_building_exterior_bc05a2ed-mDSteg2Z.png    1,357.55 kB
+../dist/public/assets/Professional_portrait_business_headshot_f4af713f-DpDdxrLO.png  1,511.18 kB
+../dist/public/assets/Digital_art_portrait_illustration_1dc8de79-BWV5vh_-.png        1,539.35 kB
+../dist/public/assets/Magical_fantasy_forest_scene_bc038f3c-Dy5LqAmD.png             1,728.80 kB
+../dist/public/assets/Ocean_wave_nature_seascape_050ff4b3-BLYg_BsM.png               1,807.15 kB
+../dist/public/assets/Mountain_landscape_sunset_scene_8ce8f6c7-BVgYsIXQ.png          2,034.24 kB
+../dist/public/assets/index-D5TE38to.css                                                73.80 kB │ gzip:  11.88 kB
+../dist/public/assets/index-DKfi90fQ.js                                                451.58 kB │ gzip: 139.07 kB
+✓ built in 4.22s
+  dist/index.js  12.1kb
+⚡ Done in 4ms
+==> Uploading build...
+==> Your site is live 🎉
