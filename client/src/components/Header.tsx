@@ -27,17 +27,28 @@ export function Header({ apiKey, onApiKeyChange }: HeaderProps) {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex h-16 items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <Sparkles
-              className="h-6 w-6 text-primary"
-              data-testid="icon-logo"
-            />
-            <h1
-              className="text-xl md:text-2xl font-bold"
-              data-testid="text-app-title"
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              <Sparkles
+                className="h-6 w-6 text-primary"
+                data-testid="icon-logo"
+              />
+              <h1
+                className="text-xl md:text-2xl font-bold"
+                data-testid="text-app-title"
+              >
+                Reve Canvas
+              </h1>
+            </div>
+            <a
+              href="https://try.elevenlabs.io/9j4lhxxrp7va"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm md:text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
+              data-testid="link-elevenlabs"
             >
-              Reve Canvas
-            </h1>
+              Elevenlabs
+            </a>
           </div>
 
           <div className="flex items-center gap-2 flex-1 max-w-md">
